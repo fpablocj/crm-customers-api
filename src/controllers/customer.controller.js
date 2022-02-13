@@ -34,7 +34,7 @@ const createCustomer = async (req, res)=>{
         const customerSaved = await newCustomer.save()
         const customerExistsWithEmail = await Customer.exists({email: email});
 
-        if (customerExistsWithEmail) 
+        if (!customerExistsWithEmail) 
         return res.status(404).json({
           ok:false,
           message:"El correo electrónico ya se encuentra registrado",
